@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 5.2.8', '>= 5.2.8.1'
 gem 'rails-i18n', '>= 4.0.9'
 
 gem 'mysql2'
@@ -26,13 +26,13 @@ gem 'bunny', '~> 1.2.1'
 gem 'cancancan'
 gem 'enumerize'
 gem 'datagrid', '>= 1.5.7'
-gem 'acts-as-taggable-on', '>= 3.0.1'
-gem 'kaminari', '>= 0.15.1'
+gem 'acts-as-taggable-on', '>= 4.0.0'
+gem 'kaminari', '>= 1.1.1'
 gem 'paranoid2'
 gem 'active_hash', '~> 1.5.0'
 gem 'http_accept_language'
-gem "globalize", "~> 4.0.0"
-gem 'paper_trail', '~> 3.0.1'
+gem "globalize", "~> 5.2.0"
+gem 'paper_trail', '~> 4.0.0'
 gem 'rails-observers'
 gem 'country_select', '~> 2.1.0'
 

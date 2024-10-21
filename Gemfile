@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 7.0.0'
 gem 'rails-i18n', '>= 4.0.9'
 
 gem 'mysql2'
@@ -25,7 +25,7 @@ gem 'amqp', '~> 1.3.0'
 gem 'bunny', '~> 1.2.1'
 gem 'cancancan'
 gem 'enumerize'
-gem 'datagrid', '>= 1.5.7'
+gem 'datagrid', '>= 1.7.0'
 gem 'acts-as-taggable-on', '>= 3.0.1'
 gem 'kaminari', '>= 0.15.1'
 gem 'paranoid2'
@@ -43,7 +43,7 @@ gem 'em-websocket', '~> 0.5.1'
 
 gem 'simple_form', '~> 3.1.1'
 gem 'slim-rails', '>= 3.1.3'
-gem 'sass-rails', '>= 5.0.6'
+gem 'sass-rails', '>= 6.0.0'
 gem 'coffee-rails', '>= 4.2.2'
 gem 'uglifier', '>= 2.7.2'
 gem "jquery-rails", ">= 3.1.4"

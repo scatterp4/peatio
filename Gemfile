@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '~> 4.2.0'
+gem 'rails', '~> 7.1.5', '>= 7.1.5.2'
 gem 'rails-i18n', '>= 4.0.9'
 
 gem 'mysql2'
@@ -25,14 +25,14 @@ gem 'amqp', '~> 1.3.0'
 gem 'bunny', '~> 1.2.1'
 gem 'cancancan'
 gem 'enumerize'
-gem 'datagrid', '>= 1.5.7'
-gem 'acts-as-taggable-on', '>= 3.0.1'
-gem 'kaminari', '>= 0.15.1'
-gem 'paranoid2'
+gem 'datagrid', '>= 1.5.8'
+gem 'acts-as-taggable-on', '>= 5.0.0'
+gem 'kaminari', '>= 1.2.0'
+gem 'paranoid2', '>= 1.1.4'
 gem 'active_hash', '~> 1.5.0'
 gem 'http_accept_language'
-gem "globalize", "~> 4.0.0"
-gem 'paper_trail', '~> 3.0.1'
+gem "globalize", "~> 6.3.0"
+gem 'paper_trail', '~> 10.3.1'
 gem 'rails-observers'
 gem 'country_select', '~> 2.1.0'
 
@@ -67,7 +67,7 @@ gem 'phonelib', '~> 0.3.5'
 gem 'twilio-ruby', '~> 3.11'
 gem 'unread', github: 'peatio/unread'
 gem 'carrierwave', '~> 0.10.0'
-gem 'simple_captcha2', require: 'simple_captcha'
+gem 'simple_captcha2', '>= 0.3.1', require: 'simple_captcha'
 gem 'rest-client', '~> 1.6.8'
 
 group :development, :test do
@@ -80,7 +80,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'pry-rails'
   gem 'quiet_assets', '>= 1.1.0'
-  gem 'mails_viewer', '>= 0.1.2'
+  gem 'mails_viewer', '>= 0.2.0'
   gem 'timecop'
   gem 'dotenv-rails'
   gem 'rspec-rails', '>= 3.7.1'

